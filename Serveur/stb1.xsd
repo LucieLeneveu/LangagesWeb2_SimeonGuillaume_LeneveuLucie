@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://univ.fr/stb" xmlns="http://univ.fr/stb">
+<?xml-stylesheet type="text/xsl" href="stb-html.xsl"?>
+
+<xs:element name="Stb" type="StbType" />
+
+<xs:element name="Titre" type="xs:string" />
+<xs:element name="Version" type="xs:string" />
+<xs:element name="Date" type="xs:string" />
+<xs:element name="Description" type="xs:string" />
+<xs:element name="entite" type="xs:string" />	
+<xs:element name="contact" type="xs:string" />	
+<xs:element name="nom" type="xs:string" />	
+<xs:element name="prenom" type="xs:string" />
+<xs:element name="identifiant" type="xs:string" />	
+<xs:element name="desc" type="xs:string" />	
+<xs:attribute name="priorite" type="xs:int" />
+<xs:element name="priorite" type="xs:int" />
+<xs:element name="Commentaire" type="xs:string" />
+<xs:element name="gender" type="xs:boolean" />	
+<xs:element name="marie" type="xs:string" />	
+<xs:element name="Client" type="ClientType" />
+<xs:element name="Equipe" type="EquipeType" />
+<xs:element name="Fonctionnalite" type="FonctionnaliteType" />
+<xs:element name="Exigence" type="ExigenceType" />
+<xs:element name="Membre" type="MembreType" />
+<xs:element name="Adresse" type="AdresseType" />
+<xs:element name="pays" type="xs:string"></xs:element>
+<xs:element name="ville" type="xs:string"></xs:element>
+<xs:element name="rue" type="xs:string"></xs:element>
+<xs:element name="cp" type="xs:int"></xs:element>
+
+<xs:complexType name="StbType">
+	<xs:sequence>
+		<xs:element ref="Titre" minOccurs="1" maxOccurs="unbounded" />
+		<xs:element ref="Version" minOccurs="1" maxOccurs="unbounded" />
+		<xs:element ref="Date" minOccurs="1" maxOccurs="unbounded" />
+		<xs:element ref="Description" minOccurs="1" maxOccurs="unbounded" />
+		<xs:element ref="Client" minOccurs="1" maxOccurs="1" />
+		<xs:element ref="Equipe" minOccurs="2" maxOccurs="7" />
+		<xs:element ref="Fonctionnalite" minOccurs="1" maxOccurs="unbounded" />
+		<xs:element ref="Commentaire" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ClientType">
+	<xs:sequence>
+		<xs:element ref="entite" minOccurs="1" maxOccurs="unbounded" />	
+		<xs:element ref="Membre" minOccurs="1" maxOccurs="unbounded" />	
+		<xs:element ref="Adresse" minOccurs="1" maxOccurs="unbounded" />	
+	</xs:sequence>	
+</xs:complexType>
+
+<xs:complexType name="EquipeType">	
+	<xs:sequence>	
+		<xs:element ref="gender" minOccurs="1" maxOccurs="1" />
+		<xs:element ref="nom" minOccurs="1" maxOccurs="1" />
+		<xs:element ref="prenom" minOccurs="1" maxOccurs="unbounded" />
+	</xs:sequence>	
+</xs:complexType>
+
+<xs:complexType name="FonctionnaliteType">	
+	<xs:sequence>	
+		<xs:element ref="desc" minOccurs="1" maxOccurs="unbounded" />	
+		<xs:element ref="Exigence" minOccurs="2" maxOccurs="unbounded" />
+	</xs:sequence>	
+	<xs:attribute name="priorite" />
+</xs:complexType>
+
+<xs:complexType name="ExigenceType">	
+	<xs:sequence>	
+		<xs:element ref="identifiant" minOccurs="1" maxOccurs="1" />	
+		<xs:element ref="desc" minOccurs="1" maxOccurs="unbounded" />
+		<xs:element ref="priorite"  />
+	</xs:sequence>		
+</xs:complexType>
+
+<xs:complexType name="MembreType">	
+	<xs:sequence>	
+		<xs:element ref="nom" minOccurs="1" maxOccurs="1" />
+		<xs:element ref="prenom" minOccurs="1" maxOccurs="1" />	
+	</xs:sequence>	
+</xs:complexType>
+
+<xs:complexType name="AdresseType">	
+	<xs:sequence>	
+		<xs:element ref="pays" minOccurs="1" maxOccurs="1"></xs:element>
+		<xs:element ref="ville" minOccurs="1" maxOccurs="1"></xs:element>
+		<xs:element ref="rue" minOccurs="1" maxOccurs="1"></xs:element>
+		<xs:element ref="cp" minOccurs="1" maxOccurs="1"></xs:element>	
+	</xs:sequence>	
+</xs:complexType>
+
+</xs:schema>
